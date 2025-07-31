@@ -18,7 +18,7 @@
 html{scroll-behavior:smooth;}
 body{background:var(--light);color:var(--dark);}
 
-/* NAVIGATION - ULTRA SIMPLE */
+/* NAVIGATION - CLEAN & PROFESSIONAL */
 .header{
   position:fixed;
   top:0;
@@ -45,90 +45,86 @@ body{background:var(--light);color:var(--dark);}
 }
 
 /* DESKTOP NAVIGATION */
-.desktop-menu{
+.desktop-nav{
   display:flex;
   list-style:none;
   gap:2rem;
 }
 
-.desktop-menu a{
+.desktop-nav a{
   color:var(--dark);
   text-decoration:none;
   font-weight:500;
   transition:.3s;
 }
 
-.desktop-menu a:hover{
+.desktop-nav a:hover{
   color:var(--accent);
 }
 
-/* MOBILE HAMBURGER - VISIBLE BUTTON */
-.hamburger-btn{
+/* MOBILE HAMBURGER - CLEAN DESIGN */
+.mobile-btn{
   display:none;
-  background:var(--accent);
-  color:white;
+  background:none;
   border:none;
-  padding:10px 15px;
+  font-size:1.5rem;
   cursor:pointer;
-  font-size:18px;
-  border-radius:5px;
-  font-weight:bold;
+  padding:0.5rem;
+  color:var(--dark);
 }
 
-.hamburger-btn:hover{
-  background:#e03e00;
+.mobile-btn:hover{
+  color:var(--accent);
 }
 
-/* MOBILE MENU - SIMPLE DROPDOWN */
-.mobile-dropdown{
+/* MOBILE MENU - PROFESSIONAL DROPDOWN */
+.mobile-nav{
   display:none;
   position:fixed;
   top:70px;
   left:0;
   width:100%;
   background:white;
-  border-bottom:3px solid var(--accent);
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  border-top:2px solid var(--accent);
   z-index:999;
 }
 
-.mobile-dropdown ul{
+.mobile-nav ul{
   list-style:none;
-  padding:20px 0;
+  padding:1rem 0;
   margin:0;
 }
 
-.mobile-dropdown li{
-  text-align:center;
+.mobile-nav li{
   border-bottom:1px solid #f0f0f0;
 }
 
-.mobile-dropdown li:last-child{
+.mobile-nav li:last-child{
   border-bottom:none;
 }
 
-.mobile-dropdown a{
+.mobile-nav a{
   display:block;
-  padding:15px 20px;
+  padding:1rem 2rem;
   color:var(--dark);
   text-decoration:none;
-  font-size:18px;
-  font-weight:600;
+  font-size:1.1rem;
+  font-weight:500;
   transition:.3s;
 }
 
-.mobile-dropdown a:hover{
-  background:var(--accent);
-  color:white;
+.mobile-nav a:hover{
+  background:var(--muted);
+  color:var(--accent);
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .desktop-menu {
+  .desktop-nav {
     display: none;
   }
-  
-  .hamburger-btn {
+  .mobile-btn {
     display: block;
   }
 }
@@ -255,13 +251,13 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
 
 <body>
 
-<!-- HEADER WITH NAVIGATION -->
+<!-- NAVIGATION HEADER -->
 <header class="header">
   <div class="nav-wrapper">
     <div class="logo">Schiatê Media</div>
     
-    <!-- DESKTOP MENU -->
-    <ul class="desktop-menu">
+    <!-- DESKTOP NAVIGATION -->
+    <ul class="desktop-nav">
       <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Work</a></li>
@@ -272,20 +268,20 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
     </ul>
     
     <!-- MOBILE HAMBURGER BUTTON -->
-    <button class="hamburger-btn" onclick="showMobileMenu()">MENU</button>
+    <button class="mobile-btn" onclick="toggleMobileMenu()">☰</button>
   </div>
 </header>
 
-<!-- MOBILE MENU DROPDOWN -->
-<div class="mobile-dropdown" id="mobileMenu">
+<!-- MOBILE NAVIGATION DROPDOWN -->
+<div class="mobile-nav" id="mobileMenu">
   <ul>
-    <li><a href="#home" onclick="hideMobileMenu()">Home</a></li>
-    <li><a href="#services" onclick="hideMobileMenu()">Services</a></li>
-    <li><a href="#portfolio" onclick="hideMobileMenu()">Work</a></li>
-    <li><a href="#testimonials" onclick="hideMobileMenu()">Reviews</a></li>
-    <li><a href="#booking" onclick="hideMobileMenu()">Book Meeting</a></li>
-    <li><a href="#about" onclick="hideMobileMenu()">About</a></li>
-    <li><a href="#contact" onclick="hideMobileMenu()">Contact</a></li>
+    <li><a href="#home" onclick="navigateToSection('home')">Home</a></li>
+    <li><a href="#services" onclick="navigateToSection('services')">Services</a></li>
+    <li><a href="#portfolio" onclick="navigateToSection('portfolio')">Work</a></li>
+    <li><a href="#testimonials" onclick="navigateToSection('testimonials')">Reviews</a></li>
+    <li><a href="#booking" onclick="navigateToSection('booking')">Book Meeting</a></li>
+    <li><a href="#about" onclick="navigateToSection('about')">About</a></li>
+    <li><a href="#contact" onclick="navigateToSection('contact')">Contact</a></li>
   </ul>
 </div>
 
@@ -293,7 +289,7 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
 <section class="hero" id="home">
   <h1>Helping YouTube Creators Scale With Premium Editing</h1>
   <p>Schiatê Media is a full-service creative partner for the internet's most ambitious voices—turning raw footage into binge-worthy stories that captivate audiences and grow channels.</p>
-  <button class="btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
+  <button class="btn" onclick="navigateToSection('booking')">
     Book a Meeting
   </button>
 </section>
@@ -305,7 +301,7 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   <div class="stat"><h2>100+</h2><p>Active Creators</p></div>
 </div>
 
-<!-- SERVICES -->
+<!-- SERVICES SECTION -->
 <section id="services">
   <h2 class="section-title">What We Do</h2>
   <p class="section-sub">End-to-end production so you can stay focused on creating.</p>
@@ -333,7 +329,7 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
-<!-- PORTFOLIO -->
+<!-- PORTFOLIO SECTION -->
 <section class="portfolio" id="portfolio">
   <h2 class="section-title" style="color:#fff;">Creator Highlights</h2>
   <p class="section-sub" style="color:#d0d0d0;">Results that speak for themselves.</p>
@@ -525,13 +521,13 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT SECTION -->
 <section class="about" id="about">
   <h2 class="section-title">A Global Collective of Storytellers</h2>
   <p>Founded by creator Anthony Schiatê, our fully remote team of editors, motion designers and channel strategists partner with creators who refuse to be average. We obsess over retention graphs, craft narratives that resonate, and iterate until every frame earns its place.</p>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT SECTION -->
 <section class="contact" id="contact">
   <h2 class="section-title">Let's Create Something Iconic</h2>
   <p class="section-sub">Have questions? Send us a message and we'll reply within 24 hours.</p>
@@ -546,23 +542,46 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
 <!-- FOOTER -->
 <footer>© 2025 Schiatê Media. All rights reserved.</footer>
 
-<!-- BULLETPROOF JAVASCRIPT -->
+<!-- CLEAN JAVASCRIPT WITH NAVIGATION -->
 <script>
-// MOBILE MENU - ABSOLUTE SIMPLEST APPROACH
-function showMobileMenu() {
-  console.log('Show menu clicked');
-  document.getElementById('mobileMenu').style.display = 'block';
+// MOBILE MENU TOGGLE - SIMPLE & RELIABLE
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  if (menu.style.display === 'block') {
+    menu.style.display = 'none';
+  } else {
+    menu.style.display = 'block';
+  }
 }
 
-function hideMobileMenu() {
-  console.log('Hide menu clicked');
+// SMOOTH NAVIGATION TO SECTIONS
+function navigateToSection(sectionId) {
+  // Hide mobile menu first
   document.getElementById('mobileMenu').style.display = 'none';
+  
+  // Smooth scroll to section
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
 }
 
-// Close menu when clicking outside
+// DESKTOP NAVIGATION SMOOTH SCROLL
+document.querySelectorAll('.desktop-nav a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    navigateToSection(targetId);
+  });
+});
+
+// CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
 document.addEventListener('click', function(event) {
-  var menu = document.getElementById('mobileMenu');
-  var button = document.querySelector('.hamburger-btn');
+  const menu = document.getElementById('mobileMenu');
+  const button = document.querySelector('.mobile-btn');
   
   if (!menu.contains(event.target) && !button.contains(event.target)) {
     menu.style.display = 'none';
