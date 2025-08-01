@@ -18,7 +18,7 @@
 html{scroll-behavior:smooth;}
 body{background:var(--light);color:var(--dark);}
 
-/* NAVIGATION - CLEAN & PROFESSIONAL */
+/* HEADER */
 .header{
   position:fixed;
   top:0;
@@ -44,92 +44,119 @@ body{background:var(--light);color:var(--dark);}
   color:var(--dark);
 }
 
-/* DESKTOP NAVIGATION */
-.desktop-nav{
+/* DESKTOP MENU */
+.desktop-menu{
   display:flex;
   list-style:none;
   gap:2rem;
 }
 
-.desktop-nav a{
+.desktop-menu a{
   color:var(--dark);
   text-decoration:none;
   font-weight:500;
   transition:.3s;
 }
 
-.desktop-nav a:hover{
+.desktop-menu a:hover{
   color:var(--accent);
 }
 
-/* MOBILE HAMBURGER - CLEAN DESIGN */
-.mobile-btn{
+/* HAMBURGER ICON - PROFESSIONAL DESIGN */
+.hamburger-btn{
   display:none;
   background:none;
   border:none;
-  font-size:1.5rem;
   cursor:pointer;
-  padding:0.5rem;
-  color:var(--dark);
+  width:30px;
+  height:24px;
+  position:relative;
+  padding:0;
 }
 
-.mobile-btn:hover{
-  color:var(--accent);
+.hamburger-btn span{
+  display:block;
+  position:absolute;
+  height:3px;
+  width:100%;
+  background:var(--dark);
+  border-radius:2px;
+  opacity:1;
+  left:0;
+  transition:all 0.25s ease-in-out;
 }
 
-/* MOBILE MENU - PROFESSIONAL DROPDOWN */
-.mobile-nav{
-  display:none;
+.hamburger-btn span:nth-child(1){
+  top:0px;
+}
+
+.hamburger-btn span:nth-child(2){
+  top:10px;
+}
+
+.hamburger-btn span:nth-child(3){
+  top:20px;
+}
+
+/* HAMBURGER ANIMATION - TRANSFORMS TO X */
+.hamburger-btn.active span:nth-child(1){
+  top:10px;
+  transform:rotate(45deg);
+}
+
+.hamburger-btn.active span:nth-child(2){
+  opacity:0;
+  left:-30px;
+}
+
+.hamburger-btn.active span:nth-child(3){
+  top:10px;
+  transform:rotate(-45deg);
+}
+
+/* MOBILE DROPDOWN */
+.mobile-dropdown{
   position:fixed;
   top:70px;
   left:0;
   width:100%;
   background:white;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-  border-top:2px solid var(--accent);
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
   z-index:999;
+  display:none;
 }
 
-.mobile-nav ul{
+.mobile-dropdown ul{
   list-style:none;
-  padding:1rem 0;
-  margin:0;
+  padding:20px 0;
 }
 
-.mobile-nav li{
+.mobile-dropdown li{
+  text-align:center;
   border-bottom:1px solid #f0f0f0;
 }
 
-.mobile-nav li:last-child{
-  border-bottom:none;
-}
-
-.mobile-nav a{
+.mobile-dropdown a{
   display:block;
-  padding:1rem 2rem;
+  padding:15px 20px;
   color:var(--dark);
   text-decoration:none;
-  font-size:1.1rem;
+  font-size:18px;
   font-weight:500;
-  transition:.3s;
 }
 
-.mobile-nav a:hover{
+.mobile-dropdown a:hover{
   background:var(--muted);
   color:var(--accent);
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .desktop-nav {
-    display: none;
-  }
-  .mobile-btn {
-    display: block;
-  }
+  .desktop-menu {display: none;}
+  .hamburger-btn {display: block;}
 }
 
-/* HERO */
+/* SECTIONS */
 .hero{min-height:100vh;display:flex;flex-direction:column;
       justify-content:center;align-items:center;text-align:center;
       padding:6rem 2rem 2rem;
@@ -142,13 +169,11 @@ body{background:var(--light);color:var(--dark);}
      border:none;border-radius:var(--radius);font-weight:600;cursor:pointer;}
 .btn:hover{background:#e03e00;}
 
-/* STATS */
 .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;
        background:var(--muted);padding:4rem 2rem;}
 .stat h2{font-size:2.5rem;color:var(--accent);}
 .stat p{opacity:.8;font-weight:500;text-align:center;}
 
-/* SECTIONS */
 section{padding:4rem 2rem;}
 .section-title{font-size:2.25rem;font-weight:700;text-align:center;margin-bottom:1rem;}
 .section-sub{font-size:1rem;color:#606060;text-align:center;margin-bottom:3rem;}
@@ -159,7 +184,6 @@ section{padding:4rem 2rem;}
 .card h3{margin-bottom:.5rem;}
 .card p{font-size:.95rem;line-height:1.45;}
 
-/* PORTFOLIO */
 .portfolio{background:var(--dark);color:var(--light);}
 .project-text{background:rgba(255,255,255,0.1);padding:2rem;border-radius:var(--radius);
               text-align:center;transition:transform .3s;}
@@ -167,7 +191,6 @@ section{padding:4rem 2rem;}
 .project-text h4{color:var(--light);font-size:1.3rem;font-weight:600;margin-bottom:1rem;}
 .project-text p{color:#d0d0d0;font-size:.95rem;line-height:1.5;}
 
-/* TESTIMONIALS SECTION */
 .testimonials{background:var(--light);padding:4rem 2rem;}
 .testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;margin-top:2rem;}
 .testimonial-card{
@@ -205,7 +228,6 @@ section{padding:4rem 2rem;}
 .author-info p{font-size:.85rem;color:#666;}
 .rating{color:#ffd700;font-size:1.2rem;margin-bottom:.5rem;}
 
-/* BOOKING SECTION */
 .booking{background:var(--muted);padding:4rem 2rem;}
 .booking-form{max-width:600px;margin:auto;background:white;padding:2rem;
               border-radius:var(--radius);box-shadow:0 4px 15px rgba(0,0,0,0.1);}
@@ -251,57 +273,53 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
 
 <body>
 
-<!-- NAVIGATION HEADER -->
 <header class="header">
   <div class="nav-wrapper">
     <div class="logo">Schiatê Media</div>
     
-    <!-- DESKTOP NAVIGATION -->
-    <ul class="desktop-nav">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Work</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
-      <li><a href="#booking">Book Meeting</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+    <ul class="desktop-menu">
+      <li><a href="#home" onclick="goToSection('home')">Home</a></li>
+      <li><a href="#services" onclick="goToSection('services')">Services</a></li>
+      <li><a href="#portfolio" onclick="goToSection('portfolio')">Work</a></li>
+      <li><a href="#testimonials" onclick="goToSection('testimonials')">Reviews</a></li>
+      <li><a href="#booking" onclick="goToSection('booking')">Book Meeting</a></li>
+      <li><a href="#about" onclick="goToSection('about')">About</a></li>
+      <li><a href="#contact" onclick="goToSection('contact')">Contact</a></li>
     </ul>
     
-    <!-- MOBILE HAMBURGER BUTTON -->
-    <button class="mobile-btn" onclick="toggleMobileMenu()">☰</button>
+    <!-- HAMBURGER ICON BUTTON -->
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </header>
 
-<!-- MOBILE NAVIGATION DROPDOWN -->
-<div class="mobile-nav" id="mobileMenu">
+<div class="mobile-dropdown" id="mobileNav">
   <ul>
-    <li><a href="#home" onclick="navigateToSection('home')">Home</a></li>
-    <li><a href="#services" onclick="navigateToSection('services')">Services</a></li>
-    <li><a href="#portfolio" onclick="navigateToSection('portfolio')">Work</a></li>
-    <li><a href="#testimonials" onclick="navigateToSection('testimonials')">Reviews</a></li>
-    <li><a href="#booking" onclick="navigateToSection('booking')">Book Meeting</a></li>
-    <li><a href="#about" onclick="navigateToSection('about')">About</a></li>
-    <li><a href="#contact" onclick="navigateToSection('contact')">Contact</a></li>
+    <li><a href="#home" onclick="goToSection('home')">Home</a></li>
+    <li><a href="#services" onclick="goToSection('services')">Services</a></li>
+    <li><a href="#portfolio" onclick="goToSection('portfolio')">Work</a></li>
+    <li><a href="#testimonials" onclick="goToSection('testimonials')">Reviews</a></li>
+    <li><a href="#booking" onclick="goToSection('booking')">Book Meeting</a></li>
+    <li><a href="#about" onclick="goToSection('about')">About</a></li>
+    <li><a href="#contact" onclick="goToSection('contact')">Contact</a></li>
   </ul>
 </div>
 
-<!-- HERO SECTION -->
 <section class="hero" id="home">
   <h1>Helping YouTube Creators Scale With Premium Editing</h1>
   <p>Schiatê Media is a full-service creative partner for the internet's most ambitious voices—turning raw footage into binge-worthy stories that captivate audiences and grow channels.</p>
-  <button class="btn" onclick="navigateToSection('booking')">
-    Book a Meeting
-  </button>
+  <button class="btn" onclick="goToSection('booking')">Book a Meeting</button>
 </section>
 
-<!-- STATS -->
 <div class="stats">
   <div class="stat"><h2>3.4B+</h2><p>Total Views Generated</p></div>
   <div class="stat"><h2>5M+</h2><p>Subscribers Gained</p></div>
   <div class="stat"><h2>100+</h2><p>Active Creators</p></div>
 </div>
 
-<!-- SERVICES SECTION -->
 <section id="services">
   <h2 class="section-title">What We Do</h2>
   <p class="section-sub">End-to-end production so you can stay focused on creating.</p>
@@ -329,7 +347,6 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
-<!-- PORTFOLIO SECTION -->
 <section class="portfolio" id="portfolio">
   <h2 class="section-title" style="color:#fff;">Creator Highlights</h2>
   <p class="section-sub" style="color:#d0d0d0;">Results that speak for themselves.</p>
@@ -353,7 +370,6 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
-<!-- CLIENT TESTIMONIALS SECTION -->
 <section class="testimonials" id="testimonials">
   <h2 class="section-title">What Our Clients Say</h2>
   <p class="section-sub">Real feedback from creators who've transformed their channels with our help.</p>
@@ -445,7 +461,6 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
-<!-- BOOKING SECTION -->
 <section class="booking" id="booking">
   <h2 class="section-title">Book Your 30-Minute Strategy Call</h2>
   <p class="section-sub">Schedule a free consultation to discuss your project needs.</p>
@@ -521,13 +536,11 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
-<!-- ABOUT SECTION -->
 <section class="about" id="about">
   <h2 class="section-title">A Global Collective of Storytellers</h2>
   <p>Founded by creator Anthony Schiatê, our fully remote team of editors, motion designers and channel strategists partner with creators who refuse to be average. We obsess over retention graphs, craft narratives that resonate, and iterate until every frame earns its place.</p>
 </section>
 
-<!-- CONTACT SECTION -->
 <section class="contact" id="contact">
   <h2 class="section-title">Let's Create Something Iconic</h2>
   <p class="section-sub">Have questions? Send us a message and we'll reply within 24 hours.</p>
@@ -539,56 +552,56 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </form>
 </section>
 
-<!-- FOOTER -->
 <footer>© 2025 Schiatê Media. All rights reserved.</footer>
 
-<!-- CLEAN JAVASCRIPT WITH NAVIGATION -->
 <script>
-// MOBILE MENU TOGGLE - SIMPLE & RELIABLE
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  if (menu.style.display === 'block') {
-    menu.style.display = 'none';
+// HAMBURGER MENU TOGGLE WITH ANIMATION
+function toggleHamburgerMenu() {
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  
+  // Toggle active class for animation
+  hamburgerBtn.classList.toggle('active');
+  
+  // Toggle menu visibility
+  if (mobileNav.style.display === 'block') {
+    mobileNav.style.display = 'none';
   } else {
-    menu.style.display = 'block';
+    mobileNav.style.display = 'block';
   }
 }
 
-// SMOOTH NAVIGATION TO SECTIONS
-function navigateToSection(sectionId) {
-  // Hide mobile menu first
-  document.getElementById('mobileMenu').style.display = 'none';
+// NAVIGATION TO SECTIONS
+function goToSection(sectionId) {
+  // Close mobile menu first
+  document.getElementById('mobileNav').style.display = 'none';
+  document.getElementById('hamburgerBtn').classList.remove('active');
   
-  // Smooth scroll to section
-  const section = document.getElementById(sectionId);
-  if (section) {
-    section.scrollIntoView({ 
+  // Scroll to section
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({
       behavior: 'smooth',
       block: 'start'
     });
   }
 }
 
-// DESKTOP NAVIGATION SMOOTH SCROLL
-document.querySelectorAll('.desktop-nav a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    navigateToSection(targetId);
-  });
-});
+// HAMBURGER BUTTON EVENT LISTENER
+document.getElementById('hamburgerBtn').addEventListener('click', toggleHamburgerMenu);
 
-// CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
+// CLOSE MENU WHEN CLICKING OUTSIDE
 document.addEventListener('click', function(event) {
-  const menu = document.getElementById('mobileMenu');
-  const button = document.querySelector('.mobile-btn');
+  const menu = document.getElementById('mobileNav');
+  const button = document.getElementById('hamburgerBtn');
   
   if (!menu.contains(event.target) && !button.contains(event.target)) {
     menu.style.display = 'none';
+    button.classList.remove('active');
   }
 });
 
-// REST OF YOUR FUNCTIONS
+// BOOKING FUNCTIONALITY
 let selectedTime = null;
 let selectedPayment = null;
 
