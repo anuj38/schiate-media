@@ -18,85 +18,144 @@
 html{scroll-behavior:smooth;}
 body{background:var(--light);color:var(--dark);}
 
-/* NAVBAR */
-nav{position:fixed;top:0;left:0;width:100%;z-index:1000;
-     background:rgba(255,255,255,.95);backdrop-filter:blur(8px);
-     border-bottom:1px solid #e7e7e7;}
-nav .inner{max-width:1280px;margin:auto;display:flex;
-           align-items:center;justify-content:space-between;
-           padding:1rem 2rem;}
-.logo{font-weight:700;font-size:1.25rem;}
+/* HEADER */
+.header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid #e7e7e7;
+  z-index:1000;
+  padding:1rem 2rem;
+}
+
+.nav-wrapper{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  max-width:1280px;
+  margin:0 auto;
+}
+
+.logo{
+  font-weight:700;
+  font-size:1.25rem;
+  color:var(--dark);
+}
 
 /* DESKTOP MENU */
-.nav-menu{display:flex;list-style:none;gap:1.5rem;}
-.nav-menu a{color:var(--dark);text-decoration:none;font-weight:500;position:relative;}
-.nav-menu a::after{content:"";position:absolute;left:0;bottom:-3px;height:2px;width:0;
-             background:var(--accent);transition:.3s;}
-.nav-menu a:hover::after{width:100%;}
+.desktop-menu{
+  display:flex;
+  list-style:none;
+  gap:2rem;
+}
 
-/* HAMBURGER MENU */
-.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;
-           padding:10px;background:none;border:none;}
-.hamburger span{width:25px;height:3px;background:var(--dark);
-                transition:all .3s ease;border-radius:3px;}
+.desktop-menu a{
+  color:var(--dark);
+  text-decoration:none;
+  font-weight:500;
+  transition:.3s;
+}
 
-/* HAMBURGER ANIMATION */
-.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px, 5px);}
-.hamburger.active span:nth-child(2){opacity:0;}
-.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px, -6px);}
+.desktop-menu a:hover{
+  color:var(--accent);
+}
 
-/* MOBILE MENU */
-.mobile-menu{
+/* HAMBURGER ICON */
+.hamburger-btn{
   display:none;
+  background:none;
+  border:none;
+  cursor:pointer;
+  width:30px;
+  height:24px;
+  position:relative;
+  padding:0;
+}
+
+.hamburger-btn span{
+  display:block;
+  position:absolute;
+  height:3px;
+  width:100%;
+  background:var(--dark);
+  border-radius:2px;
+  opacity:1;
+  left:0;
+  transition:all 0.25s ease-in-out;
+}
+
+.hamburger-btn span:nth-child(1){
+  top:0px;
+}
+
+.hamburger-btn span:nth-child(2){
+  top:10px;
+}
+
+.hamburger-btn span:nth-child(3){
+  top:20px;
+}
+
+.hamburger-btn.active span:nth-child(1){
+  top:10px;
+  transform:rotate(45deg);
+}
+
+.hamburger-btn.active span:nth-child(2){
+  opacity:0;
+  left:-30px;
+}
+
+.hamburger-btn.active span:nth-child(3){
+  top:10px;
+  transform:rotate(-45deg);
+}
+
+/* MOBILE DROPDOWN */
+.mobile-dropdown{
   position:fixed;
   top:70px;
   left:0;
   width:100%;
-  height:calc(100vh - 70px);
   background:white;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
   z-index:999;
-  padding:2rem 0;
-  transform:translateX(-100%);
-  transition:transform 0.3s ease;
+  display:none;
 }
 
-.mobile-menu.active{
-  display:block;
-  transform:translateX(0);
-}
-
-.mobile-menu ul{
+.mobile-dropdown ul{
   list-style:none;
-  padding:0;
-  margin:0;
+  padding:20px 0;
 }
 
-.mobile-menu li{
+.mobile-dropdown li{
+  text-align:center;
   border-bottom:1px solid #f0f0f0;
 }
 
-.mobile-menu a{
+.mobile-dropdown a{
   display:block;
-  padding:1.5rem 2rem;
+  padding:15px 20px;
   color:var(--dark);
   text-decoration:none;
-  font-size:1.1rem;
+  font-size:18px;
   font-weight:500;
-  transition:all .3s;
 }
 
-.mobile-menu a:hover{
-  background:var(--accent);
-  color:white;
+.mobile-dropdown a:hover{
+  background:var(--muted);
+  color:var(--accent);
 }
 
 /* RESPONSIVE */
-@media(max-width:768px){
-  .nav-menu{display:none;}
-  .hamburger{display:flex;}
+@media (max-width: 768px) {
+  .desktop-menu {display: none;}
+  .hamburger-btn {display: block;}
 }
 
-/* HERO */
+/* SECTIONS */
 .hero{min-height:100vh;display:flex;flex-direction:column;
       justify-content:center;align-items:center;text-align:center;
       padding:6rem 2rem 2rem;
@@ -109,13 +168,11 @@ nav .inner{max-width:1280px;margin:auto;display:flex;
      border:none;border-radius:var(--radius);font-weight:600;cursor:pointer;}
 .btn:hover{background:#e03e00;}
 
-/* STATS */
 .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;
        background:var(--muted);padding:4rem 2rem;}
 .stat h2{font-size:2.5rem;color:var(--accent);}
 .stat p{opacity:.8;font-weight:500;text-align:center;}
 
-/* SECTIONS */
 section{padding:4rem 2rem;}
 .section-title{font-size:2.25rem;font-weight:700;text-align:center;margin-bottom:1rem;}
 .section-sub{font-size:1rem;color:#606060;text-align:center;margin-bottom:3rem;}
@@ -132,6 +189,42 @@ section{padding:4rem 2rem;}
 .project-text:hover{transform:translateY(-6px);}
 .project-text h4{color:var(--light);font-size:1.3rem;font-weight:600;margin-bottom:1rem;}
 .project-text p{color:#d0d0d0;font-size:.95rem;line-height:1.5;}
+
+.testimonials{background:var(--light);padding:4rem 2rem;}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;margin-top:2rem;}
+.testimonial-card{
+  background:white;
+  padding:2rem;
+  border-radius:var(--radius);
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+  border-left:4px solid var(--accent);
+  transition:transform .3s;
+}
+.testimonial-card:hover{transform:translateY(-5px);}
+.testimonial-content{
+  font-size:1rem;
+  line-height:1.6;
+  color:#444;
+  margin-bottom:1.5rem;
+  font-style:italic;
+}
+.testimonial-content::before{content:'"';font-size:2rem;color:var(--accent);line-height:1;}
+.testimonial-content::after{content:'"';font-size:2rem;color:var(--accent);line-height:1;}
+.testimonial-author{display:flex;align-items:center;gap:1rem;}
+.author-avatar{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:var(--muted);
+  overflow:hidden;
+}
+.author-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.author-info h4{font-size:1rem;font-weight:600;margin-bottom:.3rem;}
+.author-info p{font-size:.85rem;color:#666;}
 
 .booking{background:var(--muted);padding:4rem 2rem;}
 .booking-form{max-width:600px;margin:auto;background:white;padding:2rem;
@@ -171,65 +264,59 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   .hero h1{font-size:2.2rem;}
   .time-slots{grid-template-columns:repeat(2,1fr);}
   .payment-methods{flex-direction:column;}
+  .testimonial-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <div class="inner">
+<header class="header">
+  <div class="nav-wrapper">
     <div class="logo">Schiatê Media</div>
     
-    <!-- DESKTOP MENU -->
-    <ul class="nav-menu">
+    <ul class="desktop-menu">
       <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Work</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#booking">Book Meeting</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     
-    <!-- HAMBURGER MENU -->
-    <button class="hamburger" id="hamburger">
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
       <span></span>
       <span></span>
       <span></span>
     </button>
   </div>
-</nav>
+</header>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-dropdown" id="mobileNav">
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#portfolio">Work</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
     <li><a href="#booking">Book Meeting</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </div>
 
-<!-- HERO -->
 <section class="hero" id="home">
   <h1>Helping YouTube Creators Scale With Premium Editing</h1>
   <p>Schiatê Media is a full-service creative partner for the internet's most ambitious voices—turning raw footage into binge-worthy stories that captivate audiences and grow channels.</p>
-  <button class="btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
-    Book a Meeting
-  </button>
+  <button class="btn" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">Book a Meeting</button>
 </section>
 
-<!-- STATS -->
 <div class="stats">
   <div class="stat"><h2>3.4B+</h2><p>Total Views Generated</p></div>
   <div class="stat"><h2>5M+</h2><p>Subscribers Gained</p></div>
   <div class="stat"><h2>100+</h2><p>Active Creators</p></div>
 </div>
 
-<!-- SERVICES -->
 <section id="services">
   <h2 class="section-title">What We Do</h2>
   <p class="section-sub">End-to-end production so you can stay focused on creating.</p>
@@ -257,7 +344,6 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
-<!-- PORTFOLIO -->
 <section class="portfolio" id="portfolio">
   <h2 class="section-title" style="color:#fff;">Creator Highlights</h2>
   <p class="section-sub" style="color:#d0d0d0;">Results that speak for themselves.</p>
@@ -281,10 +367,62 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
-<!-- BOOKING -->
+<section class="testimonials" id="testimonials">
+  <h2 class="section-title">What Our Clients Say</h2>
+  <p class="section-sub">Real feedback from creators who've transformed their channels with our help.</p>
+  
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        I was struggling with video editing for months. Schiatê Media took over and now my videos look like they're from a major network.
+      </div>
+      <div class="testimonial-author">
+        <div class="author-avatar">
+          <img src="https://framerusercontent.com/images/k6bT95tC0I6oK6LzhA63E27lS8.png" alt="Client 1">
+        </div>
+        <div class="author-info">
+          <h4>Will Tennyson</h4>
+          <p>Fitness Creator</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        I’ve worked with many editors, but none have matched the quality and efficiency of Schiatê Media. They took my content to the next level.
+      </div>
+      <div class="testimonial-author">
+        <div class="author-avatar">
+          <img src="https://framerusercontent.com/images/hS0f72hYJg12AS7OhYt2H3w3A.png" alt="Client 2">
+        </div>
+        <div class="author-info">
+          <h4>Harry Jowsey</h4>
+          <p>Podcast Host</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        The editing team is incredible. They understand my vision and deliver top-quality videos every time. My audience engagement is through the roof.
+      </div>
+      <div class="testimonial-author">
+        <div class="author-avatar">
+          <img src="https://framerusercontent.com/images/y9o4Yfls3sXoLeL5G3w2S5A6c.png" alt="Client 3">
+        </div>
+        <div class="author-info">
+          <h4>Andrei Jikh</h4>
+          <p>Finance Creator</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="booking" id="booking">
   <h2 class="section-title">Book Your 30-Minute Strategy Call</h2>
   <p class="section-sub">Schedule a free consultation to discuss your project needs.</p>
+  
   <div class="booking-form">
     <form onsubmit="handleBooking(event)" id="bookingForm">
       <div class="form-group">
@@ -356,13 +494,11 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
-<!-- ABOUT -->
 <section class="about" id="about">
   <h2 class="section-title">A Global Collective of Storytellers</h2>
   <p>Founded by creator Anthony Schiatê, our fully remote team of editors, motion designers and channel strategists partner with creators who refuse to be average. We obsess over retention graphs, craft narratives that resonate, and iterate until every frame earns its place.</p>
 </section>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
   <h2 class="section-title">Let's Create Something Iconic</h2>
   <p class="section-sub">Have questions? Send us a message and we'll reply within 24 hours.</p>
@@ -374,37 +510,43 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </form>
 </section>
 
-<!-- FOOTER -->
 <footer>© 2025 Schiatê Media. All rights reserved.</footer>
 
 <script>
-// MOBILE MENU FUNCTIONALITY - GUARANTEED TO WORK
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
+// HAMBURGER MENU & SMOOTH SCROLL
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileNav = document.getElementById('mobileNav');
 
-// Toggle mobile menu
-hamburger.addEventListener('click', function() {
-  console.log('Hamburger clicked!'); // Debug log
-  hamburger.classList.toggle('active');
-  mobileMenu.classList.toggle('active');
+function toggleMenu() {
+  hamburgerBtn.classList.toggle('active');
+  mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+}
+
+function scrollToSection(e) {
+  e.preventDefault();
+  const targetId = this.getAttribute('href').substring(1);
+  const targetSection = document.getElementById(targetId);
+
+  if (targetSection) {
+    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (mobileNav.style.display === 'block') {
+      toggleMenu();
+    }
+  }
+}
+
+hamburgerBtn.addEventListener('click', toggleMenu);
+
+document.querySelectorAll('.desktop-menu a, .mobile-dropdown a').forEach(link => {
+  link.addEventListener('click', scrollToSection);
 });
 
-// Close menu when clicking on links
-const mobileLinks = document.querySelectorAll('.mobile-menu a');
-mobileLinks.forEach(link => {
-  link.addEventListener('click', function() {
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('active');
-  });
-});
-
-// Close menu when clicking outside
 document.addEventListener('click', function(event) {
-  if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('active');
+  if (!mobileNav.contains(event.target) && !hamburgerBtn.contains(event.target) && mobileNav.style.display === 'block') {
+    toggleMenu();
   }
 });
+
 
 // BOOKING FUNCTIONALITY
 let selectedTime = null;
@@ -477,7 +619,7 @@ function processPayment() {
 
 function handleSubmit(e) {
   e.preventDefault();
-  alert('Thanks for reaching out! We'll reply shortly.');
+  alert('Thanks for reaching out! We\'ll reply shortly.');
   e.target.reset();
 }
 
