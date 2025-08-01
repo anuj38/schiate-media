@@ -18,7 +18,7 @@
 html{scroll-behavior:smooth;}
 body{background:var(--light);color:var(--dark);}
 
-/* HEADER */
+/* NAVIGATION - ULTRA SIMPLE */
 .header{
   position:fixed;
   top:0;
@@ -44,7 +44,7 @@ body{background:var(--light);color:var(--dark);}
   color:var(--dark);
 }
 
-/* DESKTOP MENU */
+/* DESKTOP NAVIGATION */
 .desktop-menu{
   display:flex;
   list-style:none;
@@ -56,13 +56,14 @@ body{background:var(--light);color:var(--dark);}
   text-decoration:none;
   font-weight:500;
   transition:.3s;
+  cursor:pointer;
 }
 
 .desktop-menu a:hover{
   color:var(--accent);
 }
 
-/* HAMBURGER ICON - PROFESSIONAL DESIGN */
+/* HAMBURGER ICON - PROFESSIONAL */
 .hamburger-btn{
   display:none;
   background:none;
@@ -98,7 +99,6 @@ body{background:var(--light);color:var(--dark);}
   top:20px;
 }
 
-/* HAMBURGER ANIMATION - TRANSFORMS TO X */
 .hamburger-btn.active span:nth-child(1){
   top:10px;
   transform:rotate(45deg);
@@ -114,26 +114,32 @@ body{background:var(--light);color:var(--dark);}
   transform:rotate(-45deg);
 }
 
-/* MOBILE DROPDOWN */
+/* MOBILE MENU - SIMPLE DROPDOWN */
 .mobile-dropdown{
+  display:none;
   position:fixed;
   top:70px;
   left:0;
   width:100%;
   background:white;
-  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  border-bottom:3px solid var(--accent);
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
   z-index:999;
-  display:none;
 }
 
 .mobile-dropdown ul{
   list-style:none;
   padding:20px 0;
+  margin:0;
 }
 
 .mobile-dropdown li{
   text-align:center;
   border-bottom:1px solid #f0f0f0;
+}
+
+.mobile-dropdown li:last-child{
+  border-bottom:none;
 }
 
 .mobile-dropdown a{
@@ -142,21 +148,28 @@ body{background:var(--light);color:var(--dark);}
   color:var(--dark);
   text-decoration:none;
   font-size:18px;
-  font-weight:500;
+  font-weight:600;
+  transition:.3s;
+  cursor:pointer;
 }
 
 .mobile-dropdown a:hover{
-  background:var(--muted);
-  color:var(--accent);
+  background:var(--accent);
+  color:white;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .desktop-menu {display: none;}
-  .hamburger-btn {display: block;}
+  .desktop-menu {
+    display: none;
+  }
+  
+  .hamburger-btn {
+    display: block;
+  }
 }
 
-/* SECTIONS */
+/* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;
       justify-content:center;align-items:center;text-align:center;
       padding:6rem 2rem 2rem;
@@ -169,11 +182,13 @@ body{background:var(--light);color:var(--dark);}
      border:none;border-radius:var(--radius);font-weight:600;cursor:pointer;}
 .btn:hover{background:#e03e00;}
 
+/* STATS */
 .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;
        background:var(--muted);padding:4rem 2rem;}
 .stat h2{font-size:2.5rem;color:var(--accent);}
 .stat p{opacity:.8;font-weight:500;text-align:center;}
 
+/* SECTIONS */
 section{padding:4rem 2rem;}
 .section-title{font-size:2.25rem;font-weight:700;text-align:center;margin-bottom:1rem;}
 .section-sub{font-size:1rem;color:#606060;text-align:center;margin-bottom:3rem;}
@@ -184,6 +199,7 @@ section{padding:4rem 2rem;}
 .card h3{margin-bottom:.5rem;}
 .card p{font-size:.95rem;line-height:1.45;}
 
+/* PORTFOLIO */
 .portfolio{background:var(--dark);color:var(--light);}
 .project-text{background:rgba(255,255,255,0.1);padding:2rem;border-radius:var(--radius);
               text-align:center;transition:transform .3s;}
@@ -191,6 +207,7 @@ section{padding:4rem 2rem;}
 .project-text h4{color:var(--light);font-size:1.3rem;font-weight:600;margin-bottom:1rem;}
 .project-text p{color:#d0d0d0;font-size:.95rem;line-height:1.5;}
 
+/* TESTIMONIALS SECTION */
 .testimonials{background:var(--light);padding:4rem 2rem;}
 .testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;margin-top:2rem;}
 .testimonial-card{
@@ -228,6 +245,19 @@ section{padding:4rem 2rem;}
 .author-info p{font-size:.85rem;color:#666;}
 .rating{color:#ffd700;font-size:1.2rem;margin-bottom:.5rem;}
 
+/* FEEDBACK FORM SECTION - NEW */
+.feedback{background:#f8f9fa;padding:4rem 2rem;}
+.feedback-form{max-width:600px;margin:auto;background:white;padding:2rem;
+               border-radius:var(--radius);box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+.feedback-form .form-group{margin-bottom:1.5rem;}
+.feedback-form label{display:block;margin-bottom:.5rem;font-weight:600;}
+.feedback-form input,select,textarea{width:100%;padding:1rem;border:1px solid #ddd;border-radius:var(--radius);}
+.feedback-form textarea{resize:vertical;min-height:120px;}
+.feedback-form .rating-input{display:flex;gap:.5rem;margin-top:.5rem;}
+.feedback-form .star{font-size:2rem;color:#ddd;cursor:pointer;transition:.3s;}
+.feedback-form .star:hover,.feedback-form .star.active{color:#ffd700;}
+
+/* BOOKING SECTION */
 .booking{background:var(--muted);padding:4rem 2rem;}
 .booking-form{max-width:600px;margin:auto;background:white;padding:2rem;
               border-radius:var(--radius);box-shadow:0 4px 15px rgba(0,0,0,0.1);}
@@ -273,22 +303,25 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
 
 <body>
 
+<!-- HEADER WITH NAVIGATION -->
 <header class="header">
   <div class="nav-wrapper">
     <div class="logo">Schiatê Media</div>
     
+    <!-- DESKTOP MENU -->
     <ul class="desktop-menu">
-      <li><a href="#home" onclick="goToSection('home')">Home</a></li>
-      <li><a href="#services" onclick="goToSection('services')">Services</a></li>
-      <li><a href="#portfolio" onclick="goToSection('portfolio')">Work</a></li>
-      <li><a href="#testimonials" onclick="goToSection('testimonials')">Reviews</a></li>
-      <li><a href="#booking" onclick="goToSection('booking')">Book Meeting</a></li>
-      <li><a href="#about" onclick="goToSection('about')">About</a></li>
-      <li><a href="#contact" onclick="goToSection('contact')">Contact</a></li>
+      <li><a data-target="home">Home</a></li>
+      <li><a data-target="services">Services</a></li>
+      <li><a data-target="portfolio">Work</a></li>
+      <li><a data-target="testimonials">Reviews</a></li>
+      <li><a data-target="feedback">Feedback</a></li>
+      <li><a data-target="booking">Book Meeting</a></li>
+      <li><a data-target="about">About</a></li>
+      <li><a data-target="contact">Contact</a></li>
     </ul>
     
-    <!-- HAMBURGER ICON BUTTON -->
-    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
+    <!-- HAMBURGER BUTTON -->
+    <button class="hamburger-btn" id="hamburgerBtn">
       <span></span>
       <span></span>
       <span></span>
@@ -296,30 +329,35 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </header>
 
-<div class="mobile-dropdown" id="mobileNav">
+<!-- MOBILE MENU DROPDOWN -->
+<div class="mobile-dropdown" id="mobileMenu">
   <ul>
-    <li><a href="#home" onclick="goToSection('home')">Home</a></li>
-    <li><a href="#services" onclick="goToSection('services')">Services</a></li>
-    <li><a href="#portfolio" onclick="goToSection('portfolio')">Work</a></li>
-    <li><a href="#testimonials" onclick="goToSection('testimonials')">Reviews</a></li>
-    <li><a href="#booking" onclick="goToSection('booking')">Book Meeting</a></li>
-    <li><a href="#about" onclick="goToSection('about')">About</a></li>
-    <li><a href="#contact" onclick="goToSection('contact')">Contact</a></li>
+    <li><a data-target="home">Home</a></li>
+    <li><a data-target="services">Services</a></li>
+    <li><a data-target="portfolio">Work</a></li>
+    <li><a data-target="testimonials">Reviews</a></li>
+    <li><a data-target="feedback">Feedback</a></li>
+    <li><a data-target="booking">Book Meeting</a></li>
+    <li><a data-target="about">About</a></li>
+    <li><a data-target="contact">Contact</a></li>
   </ul>
 </div>
 
+<!-- HERO SECTION -->
 <section class="hero" id="home">
   <h1>Helping YouTube Creators Scale With Premium Editing</h1>
   <p>Schiatê Media is a full-service creative partner for the internet's most ambitious voices—turning raw footage into binge-worthy stories that captivate audiences and grow channels.</p>
-  <button class="btn" onclick="goToSection('booking')">Book a Meeting</button>
+  <button class="btn" data-target="booking">Book a Meeting</button>
 </section>
 
+<!-- STATS -->
 <div class="stats">
   <div class="stat"><h2>3.4B+</h2><p>Total Views Generated</p></div>
   <div class="stat"><h2>5M+</h2><p>Subscribers Gained</p></div>
   <div class="stat"><h2>100+</h2><p>Active Creators</p></div>
 </div>
 
+<!-- SERVICES -->
 <section id="services">
   <h2 class="section-title">What We Do</h2>
   <p class="section-sub">End-to-end production so you can stay focused on creating.</p>
@@ -347,6 +385,7 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
+<!-- PORTFOLIO -->
 <section class="portfolio" id="portfolio">
   <h2 class="section-title" style="color:#fff;">Creator Highlights</h2>
   <p class="section-sub" style="color:#d0d0d0;">Results that speak for themselves.</p>
@@ -370,6 +409,7 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
+<!-- CLIENT TESTIMONIALS SECTION -->
 <section class="testimonials" id="testimonials">
   <h2 class="section-title">What Our Clients Say</h2>
   <p class="section-sub">Real feedback from creators who've transformed their channels with our help.</p>
@@ -461,6 +501,64 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
+<!-- FEEDBACK SECTION - NEW -->
+<section class="feedback" id="feedback">
+  <h2 class="section-title">Share Your Feedback</h2>
+  <p class="section-sub">Help us improve our services with your valuable feedback.</p>
+  
+  <div class="feedback-form">
+    <form onsubmit="handleFeedback(event)" id="feedbackForm">
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" id="feedbackName" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" id="feedbackEmail" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Service Used</label>
+        <select id="serviceType">
+          <option value="">Select Service</option>
+          <option value="video-editing">Video Editing</option>
+          <option value="thumbnail-design">Thumbnail Design</option>
+          <option value="channel-management">Channel Management</option>
+          <option value="podcast-production">Podcast Production</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Rate Your Experience *</label>
+        <div class="rating-input">
+          <span class="star" data-rating="1">★</span>
+          <span class="star" data-rating="2">★</span>
+          <span class="star" data-rating="3">★</span>
+          <span class="star" data-rating="4">★</span>
+          <span class="star" data-rating="5">★</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Your Feedback *</label>
+        <textarea id="feedbackMessage" rows="5" placeholder="Tell us about your experience with our services..." required></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="allowPublic"> 
+          Allow us to publish this feedback as a testimonial
+        </label>
+      </div>
+      
+      <button class="submit" type="submit">Submit Feedback</button>
+    </form>
+  </div>
+</section>
+
+<!-- BOOKING SECTION -->
 <section class="booking" id="booking">
   <h2 class="section-title">Book Your 30-Minute Strategy Call</h2>
   <p class="section-sub">Schedule a free consultation to discuss your project needs.</p>
@@ -536,11 +634,13 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </div>
 </section>
 
+<!-- ABOUT -->
 <section class="about" id="about">
   <h2 class="section-title">A Global Collective of Storytellers</h2>
   <p>Founded by creator Anthony Schiatê, our fully remote team of editors, motion designers and channel strategists partner with creators who refuse to be average. We obsess over retention graphs, craft narratives that resonate, and iterate until every frame earns its place.</p>
 </section>
 
+<!-- CONTACT -->
 <section class="contact" id="contact">
   <h2 class="section-title">Let's Create Something Iconic</h2>
   <p class="section-sub">Have questions? Send us a message and we'll reply within 24 hours.</p>
@@ -552,54 +652,107 @@ footer{background:var(--dark);color:var(--light);text-align:center;padding:2rem 
   </form>
 </section>
 
+<!-- FOOTER -->
 <footer>© 2025 Schiatê Media. All rights reserved.</footer>
 
+<!-- IMPROVED JAVASCRIPT - MINIMAL INTERACTION -->
 <script>
-// HAMBURGER MENU TOGGLE WITH ANIMATION
-function toggleHamburgerMenu() {
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileNav = document.getElementById('mobileNav');
-  
-  // Toggle active class for animation
-  hamburgerBtn.classList.toggle('active');
-  
-  // Toggle menu visibility
-  if (mobileNav.style.display === 'block') {
-    mobileNav.style.display = 'none';
-  } else {
-    mobileNav.style.display = 'block';
+// UNIVERSAL SMOOTH NAVIGATION - SINGLE EVENT HANDLER
+document.addEventListener('click', function(e) {
+  const target = e.target.closest('[data-target]');
+  if (target) {
+    e.preventDefault();
+    const sectionId = target.getAttribute('data-target');
+    navigateToSection(sectionId);
   }
-}
+});
 
-// NAVIGATION TO SECTIONS
-function goToSection(sectionId) {
-  // Close mobile menu first
-  document.getElementById('mobileNav').style.display = 'none';
-  document.getElementById('hamburgerBtn').classList.remove('active');
+// HAMBURGER MENU FUNCTIONALITY
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburgerBtn.addEventListener('click', function() {
+  hamburgerBtn.classList.toggle('active');
+  mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+});
+
+// SMOOTH NAVIGATION FUNCTION
+function navigateToSection(sectionId) {
+  // Close mobile menu if open
+  mobileMenu.style.display = 'none';
+  hamburgerBtn.classList.remove('active');
   
-  // Scroll to section
-  const element = document.getElementById(sectionId);
-  if (element) {
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+  // Smooth scroll to section
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'start' 
     });
   }
 }
 
-// HAMBURGER BUTTON EVENT LISTENER
-document.getElementById('hamburgerBtn').addEventListener('click', toggleHamburgerMenu);
-
-// CLOSE MENU WHEN CLICKING OUTSIDE
+// CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
 document.addEventListener('click', function(event) {
-  const menu = document.getElementById('mobileNav');
-  const button = document.getElementById('hamburgerBtn');
-  
-  if (!menu.contains(event.target) && !button.contains(event.target)) {
-    menu.style.display = 'none';
-    button.classList.remove('active');
+  if (!hamburgerBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+    mobileMenu.style.display = 'none';
+    hamburgerBtn.classList.remove('active');
   }
 });
+
+// FEEDBACK FORM FUNCTIONALITY
+let selectedRating = 0;
+
+// Star rating system
+document.querySelectorAll('.star').forEach(star => {
+  star.addEventListener('click', function() {
+    selectedRating = parseInt(this.getAttribute('data-rating'));
+    updateStars();
+  });
+  
+  star.addEventListener('mouseover', function() {
+    const rating = parseInt(this.getAttribute('data-rating'));
+    highlightStars(rating);
+  });
+});
+
+document.querySelector('.rating-input').addEventListener('mouseleave', function() {
+  updateStars();
+});
+
+function updateStars() {
+  document.querySelectorAll('.star').forEach((star, index) => {
+    star.classList.toggle('active', index < selectedRating);
+  });
+}
+
+function highlightStars(rating) {
+  document.querySelectorAll('.star').forEach((star, index) => {
+    star.classList.toggle('active', index < rating);
+  });
+}
+
+function handleFeedback(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('feedbackName').value;
+  const email = document.getElementById('feedbackEmail').value;
+  const service = document.getElementById('serviceType').value;
+  const message = document.getElementById('feedbackMessage').value;
+  const allowPublic = document.getElementById('allowPublic').checked;
+  
+  if (selectedRating === 0) {
+    alert('Please rate your experience by clicking on the stars.');
+    return;
+  }
+  
+  alert(`🎉 Thank you for your feedback!\n\nName: ${name}\nEmail: ${email}\nRating: ${selectedRating} stars\nService: ${service || 'Not specified'}\nPublic testimonial: ${allowPublic ? 'Yes' : 'No'}\n\nWe appreciate your input and will use it to improve our services!`);
+  
+  // Reset form
+  document.getElementById('feedbackForm').reset();
+  selectedRating = 0;
+  updateStars();
+}
 
 // BOOKING FUNCTIONALITY
 let selectedTime = null;
